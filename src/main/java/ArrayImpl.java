@@ -3,8 +3,8 @@ import java.util.Objects;
 
 public class ArrayImpl<E> implements Array<E>{
 
-    private int size;
-    private E[] data;
+    protected int size;
+    protected E[] data;
 
     public ArrayImpl() {
         this(DEFAULT_CAPACITY);
@@ -23,7 +23,7 @@ public class ArrayImpl<E> implements Array<E>{
 
     }
 
-    private void checkGrow() {
+    protected void checkGrow() {
         if(size == data.length){
             data = Arrays.copyOf(data,size*2);
         }
@@ -42,9 +42,8 @@ public class ArrayImpl<E> implements Array<E>{
     public E removeByIndex(int index) {
         checkIndex(index);
         E result = data[index];
-        for (int i = index; i < size-1; i++) {
-            data[i] = data[i+1];
-        }
+        if (size - index-1 >= 0)
+            System.arraycopy(data, index + 1, data, index, size - index-1);
         data[--size] = null;
         return result;
     }
