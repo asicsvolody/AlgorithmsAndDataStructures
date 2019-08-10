@@ -1,12 +1,13 @@
 public interface Array <E>{
+    int DEFAULT_CAPACITY = 16;
 
     void add(E value);
 
-    boolean remove(int index);
+    E removeByIndex(int index);
 
-    boolean removeValue(E value);
+    boolean remove(E value);
 
-    boolean conteins(E value);
+    boolean contains(E value);
 
     int indexOf(E value);
 
