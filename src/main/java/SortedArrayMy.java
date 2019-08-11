@@ -23,15 +23,13 @@ public class SortedArrayMy <E extends Object & Comparable<? super E>> extends Ar
         int high = size -1;
 
         while(low <= high){
-            int mid = (low+high) /2;
+            int mid = (low+high) / 2;
             if(data[mid].equals(value)){
                 return mid;
-            }
-            if(value.compareTo(data[mid]) > 0)
-                low = mid -1;
+            } else if(value.compareTo(data[mid]) > 0)
+                low = mid +1;
             else
-                high = mid +1;
-
+                high = mid -1;
         }
         return -1;
     }

@@ -12,8 +12,8 @@ public class ArrayMy <E extends Object & Comparable<? super E>>implements Array<
     }
 
     @SuppressWarnings({"unchecked", "ConstantConditions"})
-    public ArrayMy(int size) {
-        this.data = (E[]) new Object[size];
+    public ArrayMy(int capacity) {
+        this.data = (E[]) new Object[capacity];
     }
 
     @Override
