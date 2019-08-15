@@ -1,9 +1,13 @@
 package ru.yakimov;
 
+import ru.yakimov.Deque.Deque;
 import ru.yakimov.Queue.PriorityQueue;
 import ru.yakimov.Queue.Queue;
 import ru.yakimov.stack.Stack;
 import ru.yakimov.stack.StackImpl;
+
+import java.util.concurrent.BlockingDeque;
+import java.util.concurrent.LinkedBlockingDeque;
 
 public class Main {
 
