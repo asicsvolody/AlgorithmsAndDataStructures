@@ -1,37 +1,43 @@
 import org.jetbrains.annotations.NotNull;
 
+import java.util.List;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.TimeUnit;
-
 public class Main {
-    public static void main(String[] args) {
+
+    private static final int COUNT_ELEMENTS = 1_000_000;
+    private static final int RANGE_RANDOM = 1_000;
+    public static void main(String[] args){
         ExecutorService executorService = Executors.newFixedThreadPool(3);
-        executorService.submit(()-> measureTimeOfMethod("sortBubble()", getArrayMy() :: sortBubble));
-        executorService.submit(()-> measureTimeOfMethod("sortSelect()", getArrayMy() :: sortSelect));
-        executorService.submit(()-> measureTimeOfMethod("sortInsert()", getArrayMy() :: sortInsert));
+        List<Runnable> list = List.of(measureTimeOfMethod("sortBubble()", getArrayMy() :: sortBubble),
+                measureTimeOfMethod("sortSelect()", getArrayMy() :: sortSelect),
+                measureTimeOfMethod("sortInsert()", getArrayMy() :: sortInsert)
+                );
+        for (Runnable runnable : list) {
+            executorService.execute(runnable);
+
+        }
         executorService.shutdown();
     }
 
-    private static void measureTimeOfMethod(String methodName,Runnable method){
-
-//        long time = System.currentTimeMillis();
-
-        long time = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime());
-        method.run();
-        System.out.println("Time of "+methodName+" sort: "+(TimeUnit.NANOSECONDS.toSeconds(System.nanoTime())- time));
-
-//        System.out.println("Time of "+methodName+" sort: "+(System.currentTimeMillis()- time));
-
+    private static Runnable measureTimeOfMethod(String methodName,Runnable method) {
+        return () -> {
+            long time = TimeUnit.NANOSECONDS.toSeconds(System.nanoTime());
+            method.run();
+            System.out.println(String.format("Time of %s sort: %s", methodName, TimeUnit.NANOSECONDS.toSeconds(System.nanoTime()) - time));
+        };
     }
+
+
 
     @NotNull
     private static ArrayMy<Integer> getArrayMy() {
         ArrayMy <Integer> arrayMy = new ArrayMy<>();
         Random rnd = new Random();
-        for (int i = 1; i <1000000; i++) {
-            arrayMy.add(rnd.nextInt(1000));
+        for (int i = 1; i <COUNT_ELEMENTS; i++) {
+            arrayMy.add(rnd.nextInt(RANGE_RANDOM));
         }
         return arrayMy;
     }
