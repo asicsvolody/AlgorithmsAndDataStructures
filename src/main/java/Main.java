@@ -8,9 +8,9 @@ import java.util.concurrent.TimeUnit;
 public class Main {
     public static void main(String[] args) {
         ExecutorService executorService = Executors.newFixedThreadPool(3);
-        executorService.submit(new Thread(()-> measureTimeOfMethod("sortBubble()", getArrayMy() :: sortBubble)));
-        executorService.submit(new Thread(()-> measureTimeOfMethod("sortSelect()", getArrayMy() :: sortSelect)));
-        executorService.submit(new Thread(()-> measureTimeOfMethod("sortInsert()", getArrayMy() :: sortInsert)));
+        executorService.submit(()-> measureTimeOfMethod("sortBubble()", getArrayMy() :: sortBubble));
+        executorService.submit(()-> measureTimeOfMethod("sortSelect()", getArrayMy() :: sortSelect));
+        executorService.submit(()-> measureTimeOfMethod("sortInsert()", getArrayMy() :: sortInsert));
         executorService.shutdown();
     }
 
