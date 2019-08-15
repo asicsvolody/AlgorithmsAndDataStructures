@@ -1,5 +1,7 @@
 package ru.yakimov.stack;
 
+import java.util.Arrays;
+
 public class StackImpl<E> implements Stack<E> {
 
     private final E[] data;
@@ -45,5 +47,9 @@ public class StackImpl<E> implements Stack<E> {
     @Override
     public boolean isFull() {
         return size == data.length;
+    }
+
+    public E[] getArr(){
+        return Arrays.copyOf(data, size);
     }
 }

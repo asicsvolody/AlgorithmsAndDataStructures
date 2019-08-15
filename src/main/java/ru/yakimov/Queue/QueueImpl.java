@@ -1,5 +1,7 @@
 package ru.yakimov.Queue;
 
+import java.util.Arrays;
+
 public class QueueImpl<E> implements Queue<E> {
 
     private static final int DEFAULT_TAIL = -1;
@@ -65,5 +67,9 @@ public class QueueImpl<E> implements Queue<E> {
     @Override
     public boolean isFull() {
         return size == data.length;
+    }
+
+    public E[] getArr(){
+        return Arrays.copyOf(data, size);
     }
 }

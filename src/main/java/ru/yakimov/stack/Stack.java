@@ -10,4 +10,5 @@ public interface Stack<E> extends ICollection {
 
     E peek();
 
+
 }
