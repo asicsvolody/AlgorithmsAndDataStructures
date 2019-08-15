@@ -23,8 +23,8 @@ public class FlipLines {
             pushAllChar(str);
         }
         private void pushAllChar(String str){
-            for (int i = 0; i <str.length() ; i++) {
-                super.push(str.charAt(i));
+            for (char c : str.toCharArray() ) {
+                super.push(c);
             }
         }
     }
