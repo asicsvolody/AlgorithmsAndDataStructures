@@ -11,35 +11,47 @@ public class DequeImpl<E> extends QueueImpl<E> implements Deque<E> {
 
     @Override
     public boolean insertLeft(E value) {
-        return insert(value);
+        if(isFull())
+            return false;
+        if(head == 0)
+            head = data.length;
+        data[--head] = value;
+        size++;
+        return true;
 
     }
 
     @Override
     public boolean insertRight(E value) {
-        if(isEmpty())
-            return false;
-        if(head+1 == data.length){
-            head = DEFAULT_TAIL;
-        }
-        data[++head] = value;
-        size++;
-        return true;
+        return insert(value);
     }
 
     @Override
     public E removeLeft() {
+        return remove();
+
+    }
+
+    @Override
+    public E removeRight() {
         if(isEmpty())
             return null;
-        if(tail == DEFAULT_HEAD+1)
-            tail = data.length;
-        E value = data[--tail];
+        if(tail == DEFAULT_TAIL)
+            tail = data.length - 1;
+        E value = data[tail--];
         size--;
         return value;
     }
 
     @Override
-    public E removeRight() {
-        return remove();
+    public E peekLeft() {
+        return peek();
+    }
+
+    @Override
+    public E peekRight() {
+        if(tail == DEFAULT_TAIL)
+            tail = data.length - 1;
+        return data[tail];
     }
 }
