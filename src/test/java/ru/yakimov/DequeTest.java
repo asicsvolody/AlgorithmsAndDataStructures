@@ -93,4 +93,14 @@ public class DequeTest {
 
         Assert.assertEquals(Integer.valueOf(3),deque.peekRight());
     }
+
+    @Test
+    public void peekLeftNullTest() {
+        Assert.assertNull(deque.peekLeft());
+    }
+
+    @Test
+    public void peekRightNullTest() {
+        Assert.assertNull(deque.peekRight());
+    }
 }
