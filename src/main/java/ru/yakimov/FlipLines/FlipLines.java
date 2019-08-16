@@ -5,7 +5,7 @@ import ru.yakimov.stack.StackImpl;
 public class FlipLines {
 
     public static String flipString(String str){
-        return new CharStack(str).getAllInSting();
+        return new CharStack(str).popAllInSting();
     }
 
     private static class CharStack extends StackImpl<Character>{
@@ -21,7 +21,7 @@ public class FlipLines {
             }
         }
 
-        private String getAllInSting (){
+        private String popAllInSting (){
             StringBuilder stringBuilder = new StringBuilder(size());
             for (int i = 0; i < stringBuilder.capacity(); i++) {
                 stringBuilder.append(pop());
