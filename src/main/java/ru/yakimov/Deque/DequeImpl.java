@@ -13,7 +13,7 @@ public class DequeImpl<E> extends QueueImpl<E> implements Deque<E> {
     public boolean insertLeft(E value) {
         if(isFull())
             return false;
-        if(head == 0)
+        if(head == DEFAULT_HEAD)
             head = data.length;
         data[--head] = value;
         size++;
