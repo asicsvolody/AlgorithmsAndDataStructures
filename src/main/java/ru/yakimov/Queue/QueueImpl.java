@@ -1,7 +1,5 @@
 package ru.yakimov.Queue;
 
-import java.util.Arrays;
-
 public class QueueImpl<E> implements Queue<E> {
 
     protected static final int DEFAULT_TAIL = -1;
@@ -69,7 +67,14 @@ public class QueueImpl<E> implements Queue<E> {
         return size == data.length;
     }
 
+    @SuppressWarnings("unchecked")
     public E[] getArr(){
-        return Arrays.copyOf(data, size);
+        E[] res = (E[]) new Object[size];
+        for (int i = head, j = 0; j < size ; i++, j++) {
+            if(i == data.length)
+                i = 0;
+            res[j] = data[i];
+        }
+        return res;
     }
 }
