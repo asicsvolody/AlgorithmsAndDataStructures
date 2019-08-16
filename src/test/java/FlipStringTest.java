@@ -1,5 +1,3 @@
-package ru.yakimov;
-
 import org.junit.Assert;
 import org.junit.Test;
 import ru.yakimov.FlipLines.FlipLines;

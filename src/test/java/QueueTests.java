@@ -1,5 +1,3 @@
-package ru.yakimov;
-
 import org.junit.Before;
 import org.junit.Test;
 import ru.yakimov.Queue.QueueImpl;

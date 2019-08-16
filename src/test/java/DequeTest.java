@@ -1,5 +1,3 @@
-package ru.yakimov;
-
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -102,5 +100,14 @@ public class DequeTest {
     @Test
     public void peekRightNullTest() {
         Assert.assertNull(deque.peekRight());
+    }
+
+    @Test
+    public void peekRightSecTest() {
+        deque.insertLeft(1);
+        deque.insertLeft(2);
+        deque.insertLeft(3);
+
+        Assert.assertEquals(Integer.valueOf(1),deque.peekRight());
     }
 }
