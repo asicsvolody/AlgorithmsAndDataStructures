@@ -71,14 +71,12 @@ public class BidirectionalListImpl <E> implements BidirectionalList <E>  {
 
     @Override
     public boolean remove(E value) {
-        Node <E> elementBefore = null;
         Node <E> element = firstElement;
         while(element!= null){
             if(element.value.equals(value)){
                 break;
             }
-            elementBefore = element;
-            element = elementBefore.next;
+            element = element.next;
         }
         if(element == null)
             return false;
@@ -87,8 +85,8 @@ public class BidirectionalListImpl <E> implements BidirectionalList <E>  {
         else if(lastElement == element)
             removeLast();
         else{
-            elementBefore.next= element.next;
-            element.next.before = elementBefore;
+            element.before.next= element.next;
+            element.next.before = element.before;
             size--;
         }
         return false;
@@ -162,6 +160,13 @@ public class BidirectionalListImpl <E> implements BidirectionalList <E>  {
         return valueArr;
     }
 
+    @Override
+    public void forEach(Consumer<? super E> action) {
+        for (E value: this) {
+            action.accept(value);
+        }
+    }
+
     private class Itr implements Iterator<E>{
         private int cursor;
         private Node<E> element = firstElement;
@@ -174,7 +179,7 @@ public class BidirectionalListImpl <E> implements BidirectionalList <E>  {
         @Override
         public E next() {
             E  resValue;
-            if(firstElement == null)
+            if(element == null)
                 throw new NullPointerException("There is't element");
             else{
                 resValue = element.value;
@@ -192,7 +197,9 @@ public class BidirectionalListImpl <E> implements BidirectionalList <E>  {
 
         @Override
         public void forEachRemaining(Consumer<? super E> action) {
-
+            while(this.hasNext()){
+                action.accept(this.next());
+            }
         }
     }
 }

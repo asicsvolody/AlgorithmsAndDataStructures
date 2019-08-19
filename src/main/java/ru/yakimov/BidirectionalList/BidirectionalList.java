@@ -1,24 +1,24 @@
 package ru.yakimov.BidirectionalList;
 
-import ru.yakimov.ICollections;
+import ru.yakimov.LinkedList.LinkedList;
 
-public interface BidirectionalList<E> extends ICollections, Iterable<E> {
+public interface BidirectionalList<E>  extends LinkedList<E> {
 
-    void insertFirst(E value);
+    void insertFirst(E value);//
 
     void insertLast(E value);
 
-    E removeFirst();
+    E removeFirst();//
 
     E removeLast();
 
-    boolean remove(E value);
+    boolean remove(E value);//
 
-    boolean contains(E value);
+    boolean contains(E value);//
 
-    void display();
+    void display();//
 
-    E getFirstValue();
+    E getFirstValue();//
 
     E getLastValue();
 

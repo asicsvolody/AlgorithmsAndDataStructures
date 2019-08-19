@@ -16,8 +16,6 @@ public interface LinkedList <E> extends ICollections, Iterable<E> {
 
     E getFirstValue();
 
-    Node<E> getFirst();
-
     @Override
     default boolean isFull() {
         return false;

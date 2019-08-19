@@ -1,6 +1,8 @@
 package ru.yakimov.LinkedList;
 
+
 import java.util.Iterator;
+import java.util.function.Consumer;
 
 public class LinkedListImpl<E> implements LinkedList<E> {
     protected Node<E> firstElement;
@@ -74,14 +76,13 @@ public class LinkedListImpl<E> implements LinkedList<E> {
         return firstElement.value;
     }
 
-    @Override
     public Node<E> getFirst() {
         return firstElement;
     }
 
     @Override
     public Iterator<E> iterator() {
-        return null;
+        return new Itr();
     }
 
     @Override
@@ -103,5 +104,47 @@ public class LinkedListImpl<E> implements LinkedList<E> {
             nodeElement = nodeElement.next;
         }
         return valueArr;
+    }
+
+    @Override
+    public void forEach(Consumer<? super E> action) {
+        for (E value: this) {
+            action.accept(value);
+        }
+    }
+
+    private class Itr implements Iterator<E>{
+        private int cursor;
+        private LinkedListImpl.Node<E> element = firstElement;
+        private E valueLastElement;
+        @Override
+        public boolean hasNext() {
+            return cursor!= size;
+        }
+
+
+        @Override
+        public E next() {
+            if(element == null)
+                throw new NullPointerException("There is't element");
+            else{
+                valueLastElement = element.value;
+                element = element.next;
+                cursor++;
+            }
+            return valueLastElement;
+        }
+
+        @Override
+        public void remove() {
+            LinkedListImpl.this.remove(valueLastElement);
+        }
+
+        @Override
+        public void forEachRemaining(Consumer<? super E> action) {
+            while(this.hasNext()){
+                action.accept(this.next());
+            }
+        }
     }
 }
