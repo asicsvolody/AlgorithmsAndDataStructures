@@ -2,7 +2,7 @@ package ru.yakimov.LinkedList;
 
 import java.util.Iterator;
 
-public class LinkListImpl<E> implements LinkedList<E> {
+public class LinkedListImpl<E> implements LinkedList<E> {
     protected Node<E> firstElement;
     protected int size;
 
@@ -63,6 +63,7 @@ public class LinkListImpl<E> implements LinkedList<E> {
         Node<E> element = firstElement;
         while(element != null){
             System.out.println(element.value);
+            element = element.next;
         }
         System.out.println("---------------------");
     }

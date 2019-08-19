@@ -1,15 +1,15 @@
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import ru.yakimov.LinkedList.LinkListImpl;
+import ru.yakimov.LinkedList.LinkedListImpl;
 
 public class LinkListImplTest {
 
-    private LinkListImpl<Integer> linkList;
+    private LinkedListImpl<Integer> linkList;
 
     @Before
     public void init(){
-        linkList = new LinkListImpl<>();
+        linkList = new LinkedListImpl<>();
     }
 
     @Test

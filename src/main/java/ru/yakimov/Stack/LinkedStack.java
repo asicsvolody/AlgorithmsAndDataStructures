@@ -1,13 +1,13 @@
 package ru.yakimov.Stack;
 
-import ru.yakimov.LinkedList.LinkListImpl;
+import ru.yakimov.LinkedList.LinkedListImpl;
 
 public class LinkedStack<E> implements Stack<E> {
 
-    private LinkListImpl <E> linkList;
+    private LinkedListImpl<E> linkList;
 
     public LinkedStack() {
-        this.linkList = new LinkListImpl<>();
+        this.linkList = new LinkedListImpl<>();
     }
 
     @Override

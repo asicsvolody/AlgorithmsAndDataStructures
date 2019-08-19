@@ -1,8 +1,8 @@
 package ru.yakimov.TwoSideLinkedList;
 
-import ru.yakimov.LinkedList.LinkListImpl;
+import ru.yakimov.LinkedList.LinkedListImpl;
 
-public class TwoSideLinkedListImpl<E> extends LinkListImpl<E> implements TwoSideLinkedList<E> {
+public class TwoSideLinkedListImpl<E> extends LinkedListImpl<E> implements TwoSideLinkedList<E> {
 
     private Node<E> lastElement;
 
