@@ -19,7 +19,7 @@ public class LinkedIteratorApp {
 
     private static <T extends LinkedList<Integer>> void checkBidirectionalListImplIterator(T collection) {
 
-        System.out.println("Check remove, hasNext, next");
+        System.out.println("Check remove, hasNext and next");
 
         collection.display();
 
