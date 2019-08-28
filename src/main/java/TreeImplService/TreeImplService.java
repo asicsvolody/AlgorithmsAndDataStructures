@@ -23,6 +23,11 @@ public class TreeImplService {
         return treeList;
     }
 
+    public TreeImpl<Integer> balansing(TreeImpl<Integer> tree){
+
+
+    }
+
     public static void main(String[] args) {
 
         TreeImplService ts =new TreeImplService();

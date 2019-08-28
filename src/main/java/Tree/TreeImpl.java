@@ -262,9 +262,6 @@ public class TreeImpl<E extends Comparable<? super E>> implements Tree<E> {
         inOrder(node.getRightChild());
     }
 
-    private void balansing(){
-    }
-
     private class NodeAndParent {
         Node<E> node;
         Node<E> parent;
@@ -274,9 +271,4 @@ public class TreeImpl<E extends Comparable<? super E>> implements Tree<E> {
             this.parent = parent;
         }
     }
-
-
-
-
-
 }
