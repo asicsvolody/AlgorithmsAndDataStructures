@@ -1,5 +1,7 @@
 package Tree;
 
+import SortedArr.SortedArrayImpl;
+
 import java.util.Stack;
 
 public class TreeImpl<E extends Comparable<? super E>> implements Tree<E> {
@@ -260,6 +262,41 @@ public class TreeImpl<E extends Comparable<? super E>> implements Tree<E> {
         inOrder(node.getLeftChild());
         System.out.println(node.getValue());
         inOrder(node.getRightChild());
+    }
+
+    @SuppressWarnings("unchecked")
+    public SortedArrayImpl<E> toSortedList(){
+        SortedArrayImpl<E> sortedArray = new SortedArrayImpl<>();
+        Stack<Node> globalStack = new Stack<>();
+        globalStack.push(root);
+
+        boolean isRowEmpty = false;
+
+        while (!isRowEmpty) {
+            Stack<Node> localStack = new Stack<>();
+            isRowEmpty = true;
+            while (!globalStack.isEmpty()) {
+                Node tempNode = globalStack.pop();
+                if (tempNode != null) {
+                    sortedArray.add((E) tempNode.getValue());
+                    localStack.push(tempNode.getLeftChild());
+                    localStack.push(tempNode.getRightChild());
+                    if (tempNode.getLeftChild() != null || tempNode.getRightChild() != null) {
+                        isRowEmpty = false;
+                    }
+                } else {
+                    localStack.push(null);
+                    localStack.push(null);
+                }
+
+            }
+
+            while (!localStack.isEmpty()) {
+                globalStack.push(localStack.pop());
+            }
+        }
+        return sortedArray;
+
     }
 
     private class NodeAndParent {
