@@ -12,7 +12,8 @@ public class MainClass {
                 , "Piter"
                 , "Saratov"
                 , "Perm"
-                , "Kirov");
+                , "Kirov"
+        );
         navigator.addEdge("Moscow","Piter", 20);
         navigator.addEdge("Moscow","Ryazan", 40);
         navigator.addEdge("Moscow","Perm", 30);
@@ -27,13 +28,11 @@ public class MainClass {
         navigator.addEdge("Perm","Kirov", 70);
         navigator.addEdge("Kirov","Saratov", 10);
 
-        try {
-            navigator
-                    .getShortestTrip("Moscow","Voronezh")
-                    .display();
-        } catch (CloneNotSupportedException e) {
-            e.printStackTrace();
-        }
+
+        navigator
+                .getShortestTrip("Moscow","Voronezh")
+                .display();
+
 
     }
 }

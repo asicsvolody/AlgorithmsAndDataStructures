@@ -54,74 +54,11 @@ public class Navigator {
         return -1;
     }
 
-    public ShortestWay getShortestTrip(String startTown, String finishTown) throws CloneNotSupportedException {
-//        int startIndex = indexOf(startTown);
-//        int finishIndex = indexOf(finishTown);
-//
-//        ShortestWay resWay = new ShortestWay();
-//
-//        if (startIndex == -1  ) {
-//            throw new IllegalArgumentException("There is`t town : " + startTown);
-//        }
-//
-//        if (finishIndex == -1 ) {
-//            throw new IllegalArgumentException("There is`t town : " + finishTown);
-//        }
-//
-//        Stack<Vertex> vertexStack = new Stack<>();
-//        Stack<Edge> edgeStack = new Stack<>();
-//
-//        Vertex vertex = vertexList.get(startIndex);
-//        int indexBefore = startIndex;
-//
-//        ShortestWay newWay = new ShortestWay();
-//
-//        visitVertex(vertexStack, vertex);
-//        newWay.addTown(vertex);
-//
-//        while (!vertexStack.isEmpty()) {
-//            vertex = getNearUnvisitedVertex(vertexStack.peek());
-//
-//            if (vertex != null) {
-//                goTrip(indexBefore,vertex,edgeStack);
-//                newWay.addTrip(edgeStack.peek());
-//                visitVertex(vertexStack, vertex);
-//                newWay.addTown(vertexStack.peek());
-//
-//                if(indexBefore == startIndex)
-//                    vertexList.get(finishIndex).setVisited(false);
-//
-//                if(indexOf(vertex.getLabel()) == finishIndex){
-//                    resWay = (resWay.getDistance() < newWay.getDistance() && resWay.getDistance()!= 0) ? resWay : (ShortestWay) newWay.clone();
-//
-//                    newWay.removeTrip(edgeStack.pop());
-//                    newWay.removeTown(vertexStack.pop());
-//                    indexBefore = indexOf(vertexStack.peek().getLabel());
-//
-//
-//                }else{
-//                    indexBefore = indexOf(vertex.getLabel());
-//
-//                }
-//            } else {
-//                if (indexBefore != startIndex) {
-//
-//                    newWay.removeTrip(edgeStack.pop());
-//                    newWay.removeTown(vertexStack.pop());
-//                    indexBefore = indexOf(vertexStack.peek().getLabel());
-//
-//
-//                }else
-//                    vertexStack.pop();
-//
-//            }
-//        }
-//
-//        resetVertexState();
-//        return resWay;
+    public ShortestWay getShortestTrip(String startTown, String finishTown) {
+        return new TripOptimizer(startTown, finishTown).getSortestWay();
     }
 
-    private class TripOptimisator{
+    private class TripOptimizer {
         private int startIndex;
         private int finishIndex;
         private ShortestWay resWay;
@@ -132,10 +69,10 @@ public class Navigator {
         private Stack<Vertex> vertexStack;
         private Stack<Edge> edgeStack ;
 
-        public TripOptimisator(String startTown, String finishTown) {
+        public TripOptimizer(String startTown, String finishTown) {
             this.startIndex = indexOf(startTown);
             this.finishIndex = indexOf(finishTown);
-            ShortestWay resWay = new ShortestWay();
+            resWay = new ShortestWay();
 
             vertexStack = new Stack<>();
             edgeStack = new Stack<>();
