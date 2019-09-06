@@ -27,4 +27,11 @@ public class Vertex {
     public boolean getVisited() {
         return visited;
     }
+
+    @Override
+    public boolean equals(Object obj) {
+        if(obj instanceof Vertex)
+            return this.label.equals((((Vertex) obj).label));
+        return false;
+    }
 }
