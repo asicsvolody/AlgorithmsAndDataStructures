@@ -1,4 +1,4 @@
-package ru.yakimov.Lesson;
+package ru.yakimov.ChainTask;
 
 public interface ICollection {
 
