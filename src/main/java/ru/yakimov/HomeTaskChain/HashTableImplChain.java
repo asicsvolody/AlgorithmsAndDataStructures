@@ -1,4 +1,6 @@
-package ru.yakimov.ChainTask;
+package ru.yakimov.HomeTaskChain;
+
+import ru.yakimov.Lesson.HashTable;
 
 public class HashTableImplChain<K, V> implements HashTable<K, V> {
 

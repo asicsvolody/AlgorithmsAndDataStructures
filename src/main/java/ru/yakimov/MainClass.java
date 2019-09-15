@@ -1,4 +1,8 @@
-package ru.yakimov.ChainTask;
+package ru.yakimov;
+
+import ru.yakimov.Lesson.HashTable;
+import ru.yakimov.Lesson.ItemDefinition;
+import ru.yakimov.HomeTaskChain.HashTableImplChain;
 
 public class MainClass {
 

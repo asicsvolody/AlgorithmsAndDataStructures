@@ -1,4 +1,4 @@
-package ru.yakimov.ChainTask;
+package ru.yakimov.Lesson;
 
 public interface HashTable<K, V> extends ICollection {
 

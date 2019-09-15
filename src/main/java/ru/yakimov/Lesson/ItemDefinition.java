@@ -1,4 +1,4 @@
-package ru.yakimov.ChainTask;
+package ru.yakimov.Lesson;
 
 public class ItemDefinition {
 
